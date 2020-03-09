@@ -1,1 +1,1 @@
-# gva-cash-float-fullstack-app
+# Template Repo for MERN Fullstack
