@@ -19,3 +19,11 @@ Run this command in both express-api and react-client directories
 ```bash
 > npm i && npm start
 ```
+## Features
+### Now with!
+- Babel in the backend as well so you can use proper ES6 features such as import and export default class key words.
+- Mongo Atlas connection script
+- Create React App prebuilt
+### Please request features - some would be nice features are:
+- custom script to do create-react-app and hook it up to backend - so it keeps the install of React fresh
+- other scripts for cooking custom stacks attributes
