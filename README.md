@@ -1,5 +1,10 @@
 # Template Repo for MERN Fullstack v0.1.0
 A work in progress.
+## Stack Description
+- React
+- Express
+- Node
+- Mongo Atlas
 ## Installation Procedure
 ### App Settings with .env
 Your credentials need to go into a .env file in for the backend:
