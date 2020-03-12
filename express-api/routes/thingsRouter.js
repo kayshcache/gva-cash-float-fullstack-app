@@ -1,9 +1,13 @@
 import express from 'express';
-const router = express.Router();
+import {
+  createThing,
+  readThings,
+  updateThing,
+  deleteThing,
+} from '../controllers/thingsControllers';
 
-/* GET main listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-export default router;
+export default express.Router()
+  .post('/', createThing) 
+  .get('/', readThings) 
+  .put('/:thingId', updateThing) 
+  .delete('/:thingId', deleteThing); 
