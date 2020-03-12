@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Use bespoke routers - as many as you like
 app.use('/', indexRouter);
-app.use('/main', thingRouter);
+app.use('/things', thingsRouter);
 
 // Must keep the non-ES6 syntax for now
 module.exports = app;
