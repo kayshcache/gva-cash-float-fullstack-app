@@ -1,11 +1,13 @@
 import mongoose from 'mongoose';
-require('dotenv').config()
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default class MongoAtlas {
-  constructor(dbName) {
+  constructor(databaseName) {
     this.atlasUrl = process.env.ATLAS_URL;
     this.credentials = process.env.ATLAS_CREDENTIALS;
-    this.dbName = dbName;
+    this.databaseName = dbName;
     this.connectionString = `mongodb+srv://${this.credentials}@${this.atlasUrl + this.dbName}?retryWrites=true&w=majority`;
   }
   connect() {
