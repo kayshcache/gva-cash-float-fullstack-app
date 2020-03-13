@@ -5,9 +5,12 @@ A work in progress.
 - Express
 - React
 - Node
+### Example Endpoint
+The example endpoint for the API is http://127.0.0.1:4242/things. You can hit this with curl for testing or do it with React. It is recommended to use [https://www.npmjs.com/package/axios](Axios) and therefore is installed, but you could equally use any package or the [https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API](FetchAPI).
+When getting data to hold in the state, the request goes into the componentDidMount() method of a stateful React component. See ./src/App.js for the example using Axios.
 ## Installation Procedure
 ### App Settings with .env
-Your credentials need to go into a .env file in for the backend:
+Your credentials need to go into a .env file in for the backend: ./express-api/.env
 ```
 ATLAS_CREDENTIALS=<user>:<password>
 ATLAS_URL=<your subdomain>.mongodb.net/
@@ -19,6 +22,8 @@ Run this command in both express-api and react-client directories
 ```bash
 > npm i && npm start
 ```
+### React <--> Express Connection
+
 ## Features
 ### Now with!
 - Babel in the backend as well so you can use proper ES6 features such as import and export default class key words.
