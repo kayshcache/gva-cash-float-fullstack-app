@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ThingSchema } from '../models/thingsModel';
+import { ThingSchema } from '../models/thingModel';
 
 const Thing = mongoose.model('Thing', ThingSchema);
 

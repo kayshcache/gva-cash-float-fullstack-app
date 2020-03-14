@@ -4,10 +4,11 @@ import {
   readThings,
   updateThing,
   deleteThing,
-} from '../controllers/thingsControllers';
+} from '../controllers/thingControllers';
+import { login, register, loginRequired } from '../controllers/userControllers';
 
 export default express.Router()
   .post('/', createThing) 
   .get('/', readThings) 
   .put('/:thingId', updateThing) 
-  .delete('/:thingId', deleteThing); 
+  .delete('/:thingId', loginRequired, deleteThing); 

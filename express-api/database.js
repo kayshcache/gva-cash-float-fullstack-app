@@ -4,10 +4,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default class MongoAtlas {
-  constructor(databaseName) {
+  constructor(dbName) {
     this.atlasUrl = process.env.ATLAS_URL;
     this.credentials = process.env.ATLAS_CREDENTIALS;
-    this.databaseName = databaseName;
+    this.dbName = dbName;
     this.connectionString = `mongodb+srv://${this.credentials}@${this.atlasUrl + this.dbName}?retryWrites=true&w=majority`;
   }
   connect() {
