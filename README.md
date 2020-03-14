@@ -7,7 +7,9 @@ A work in progress.
 - Node
 ### Example Endpoint
 The example endpoint for the API is http://127.0.0.1:4242/things. You can hit this with curl for testing or do it with React. It is recommended to use [https://www.npmjs.com/package/axios](Axios) and therefore is installed, but you could equally use any package or the [https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API](FetchAPI).
-When getting data to hold in the state, the request goes into the componentDidMount() method of a stateful React component. See ./src/App.js for the example using Axios.
+When getting data to hold in the state, the request goes into the componentDidMount() method of a stateful React component. See ./src/pages/Home.js for the example using Axios.
+### React Router for Pages
+Using react router, see ./src/pages/Home.js for the example stateful component.
 ## Installation Procedure
 ### App Settings with .env
 Your credentials need to go into a .env file in for the backend: ./express-api/.env
