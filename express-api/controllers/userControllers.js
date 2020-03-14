@@ -10,6 +10,7 @@ const User = mongoose.model('User', UserSchema);
 
 export const loginRequired = (req, res, next) => {
   if (req.user) next();
+  console.log('WARNING: Unauthorized user attempted to access API');
   return res.status(401).json({msg: 'Unauthorized user'});
 }
 

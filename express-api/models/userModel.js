@@ -12,7 +12,7 @@ export const UserSchema = new Schema({
     type: String,
     required: true
   },
-  hasPassword: {
+  hashPassword: {
     type: String,
     required: true
   },
