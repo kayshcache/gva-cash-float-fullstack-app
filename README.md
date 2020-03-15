@@ -21,6 +21,11 @@ PORT=4242
 ATLAS_CREDENTIALS=<user>:<password>
 ATLAS_URL=<your subdomain>.mongodb.net/
 
+# Redis Enterprise Cloud Settings
+REDIS_HOST=<host> 
+REDIS_PORT=<port>
+REDIS_PASSWORD=<pass>
+
 # JWT & other Auth Settings
 JWT_KEY=vulnerableKey
 ```
