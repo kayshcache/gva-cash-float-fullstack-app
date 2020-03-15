@@ -14,9 +14,14 @@ Using react router, see ./src/pages/Home.js for the example stateful component.
 ### App Settings with .env
 Your credentials need to go into a .env file in for the backend: ./express-api/.env
 ```
+# Settings for the app
+PORT=4242
+
+# Mongo Atlas Settings
 ATLAS_CREDENTIALS=<user>:<password>
 ATLAS_URL=<your subdomain>.mongodb.net/
-PORT=4242
+
+# JWT & other Auth Settings
 JWT_KEY=vulnerableKey
 ```
 ### NPM Install & Start
