@@ -5,6 +5,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import helmet from 'helmet';
 import jsonwebtoken from 'jsonwebtoken';
+import connectRedis from './redis';
+
+connectRedis();
 
 // Modules from this repository
 import indexRouter from './routes/indexRouter';

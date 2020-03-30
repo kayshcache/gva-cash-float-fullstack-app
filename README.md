@@ -11,15 +11,20 @@ When getting data to hold in the state, the request goes into the componentDidMo
 ### React Router for Pages
 Using react router, see ./src/pages/Home.js for the example stateful component.
 ## Installation Procedure
-### App Settings with .env
+### Api Settings with .env
 Your credentials need to go into a .env file in for the backend: ./express-api/.env
 ```
-# Settings for the app
+# Settings for the api
 PORT=4242
 
 # Mongo Atlas Settings
 ATLAS_CREDENTIALS=<user>:<password>
 ATLAS_URL=<your subdomain>.mongodb.net/
+
+# Redis Enterprise Cloud Settings
+REDIS_HOST=<subdomain>.redislabs.com
+REDIS_PORT=<port>
+REDIS_PASSWORD=<pass>
 
 # JWT & other Auth Settings
 JWT_KEY=vulnerableKey
@@ -28,6 +33,19 @@ JWT_KEY=vulnerableKey
 Run this command in both express-api and react-client directories
 ```bash
 > npm i && npm start
+```
+### Test API
+GET Request to get all the things in the mongodb
+```bash
+curl localhost:PORT/things
+```
+POST Request to make a new thing in the mongodb
+```
+curl -X POST localhost:PORT/things -H 'Content-Type: application/json' -d '{"thingName": "somenewthingy"}'
+```
+DELETE Request to delete one thing in the mongodb:
+```bash
+curl -X DELETE localhost:PORT/things 
 ```
 ### React <--> Express Connection
 
