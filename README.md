@@ -34,7 +34,7 @@ Run this command in both express-api and react-client directories
 ```bash
 > npm i && npm start
 ```
-### Test API
+## Test API
 GET Request to get all the things in the mongodb
 ```bash
 curl localhost:PORT/things
@@ -47,9 +47,9 @@ DELETE Request to delete one thing in the mongodb:
 ```bash
 curl -X DELETE localhost:PORT/things 
 ```
-### React <--> Express Connection
+## React <--> Express Connection
 
-### Updating React
+## Updating React App
 #### Update react-scripts to remove vulnerability warnings*:
 ```
 npm i --save --save-exact react-scripts@latest
