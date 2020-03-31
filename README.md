@@ -50,12 +50,12 @@ curl -X DELETE localhost:PORT/things
 ### React <--> Express Connection
 
 ### Updating React
-Update react-scripts to remove vulnerability warnings:
+#### Update react-scripts to remove vulnerability warnings*:
 ```
 npm i --save --save-exact react-scripts@latest
 ```
-* [Check changelog for create-react-app](https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md)
-Remove the optional dependencies warning from NPM for your piece of mind:
+\* [Check changelog for create-react-app](https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md)
+#### Remove the optional dependencies warning from NPM for your piece of mind:
 ```
 npm i fsevents@latest -f --save-optional
 ```
