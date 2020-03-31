@@ -54,7 +54,7 @@ Update react-scripts to remove vulnerability warnings:
 ```
 npm i --save --save-exact react-scripts@latest
 ```
-* (https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md)[Check changelog for create-react-app]
+* [Check changelog for create-react-app](https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md)
 Remove the optional dependencies warning from NPM for your piece of mind:
 ```
 npm i fsevents@latest -f --save-optional
