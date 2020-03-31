@@ -49,6 +49,17 @@ curl -X DELETE localhost:PORT/things
 ```
 ### React <--> Express Connection
 
+### Updating React
+Update react-scripts to remove vulnerability warnings:
+```
+npm i --save --save-exact react-scripts@latest
+```
+* (https://github.com/facebook/create-react-app/blob/master/CHANGELOG.md)[Check changelog for create-react-app]
+Remove the optional dependencies warning from NPM for your piece of mind:
+```
+npm i fsevents@latest -f --save-optional
+```
+
 ## Features
 ### Now with!
 - Babel in the backend as well so you can use proper ES6 features such as import and export default class key words.
