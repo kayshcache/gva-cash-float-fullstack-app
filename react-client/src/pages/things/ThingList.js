@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import NewThingForm from './NewThingForm';
 import ThingListItem from './ThingListItem';
-import { deleteThing } from '../actions';
-import { loadThings } from '../thunks';
+import { loadThings, deleteThingRequest } from '../thunks';
 
-// Material-UI Imports
+// Material-UI
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -20,10 +17,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Export for testing
+// Export non-default for testing
 export const ThingList = ({ things = [], isLoading, onDeletePressed, onDisplayAlertClicked, startLoadingThings,}) => {
 
   const classes = useStyles();
+
   useEffect(() => {
     startLoadingThings();
   }, [startLoadingThings]);
@@ -32,7 +30,7 @@ export const ThingList = ({ things = [], isLoading, onDeletePressed, onDisplayAl
   const content = (
     <div className={classes.root}>
       <Grid container spacing={3}>
-	  {things.map(thing => <ThingListItem key={thing.thingName} thing={thing} onDeletePressed={onDeletePressed} />)}
+	  {things.map(thing => <ThingListItem key={thing._id} thing={thing} onDeletePressed={onDeletePressed} />)}
       </Grid>
     </div>
     );
@@ -48,7 +46,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   startLoadingThings: () => dispatch(loadThings()),
-  onDeletePressed: thingName => dispatch(deleteThing(thingName)),
+  onDeletePressed: id => dispatch(deleteThingRequest(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThingList);

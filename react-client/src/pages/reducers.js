@@ -30,8 +30,8 @@ export const things = (state = [], action) => {
       return state.concat(thingName);
     }
     case DELETE_THING: {
-      const { thingName } = payload;
-      return state.filter(thing => thing.thingName !== thingName);
+      const { thing: thingToRemove } = payload;
+      return state.filter(thing => thing._id !== thingToRemove._id);
     }
     case LOAD_THINGS_SUCCESS: {
       const { things } = payload;

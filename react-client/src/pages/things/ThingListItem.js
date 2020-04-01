@@ -44,7 +44,7 @@ const ThingListItem = ({ thing, onDeletePressed }) => {
         </Typography>
       </CardContent>
       <CardActions>
-	<Button size="small" onClick={() => onDeletePressed(thing.thingName)}>
+	<Button size="small" onClick={() => onDeletePressed(thing._id)}>
 	  Delete
 	</Button>
       </CardActions>

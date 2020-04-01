@@ -4,6 +4,7 @@ import {
   loadThingsSuccess,
   loadThingsFailure,
   createThing,
+  deleteThing,
 } from './actions';
 
 export const displayAlert = err => () => {
@@ -33,8 +34,20 @@ export const createThingRequest = thingName => async dispatch => {
       method: 'post',
       body,
     });
-    const thing = await response.json();
-    dispatch(createThing(thing));
+    const newThing = await response.json();
+    dispatch(createThing(newThing));
+  } catch (err) {
+    dispatch(displayAlert(err));
+  }
+}
+
+export const deleteThingRequest = id => async dispatch => {
+  try {
+    const response = await fetch(`/things/${id}`, {
+      method: 'delete',
+    });
+    const thingId = await response.json();
+    dispatch(deleteThing(thingId));
   } catch (err) {
     dispatch(displayAlert(err));
   }

@@ -5,9 +5,9 @@ export const createThing = thingName => ({
 });
 
 export const DELETE_THING = 'DELETE_THING';
-export const deleteThing = thingName => ({
+export const deleteThing = thing => ({
   type: DELETE_THING,
-  payload: { thingName },
+  payload: { thing },
 });
 
 export const LOAD_THINGS_IN_PROGRESS = 'LOAD_THINGS_IN_PROGRESS';
