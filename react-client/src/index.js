@@ -12,15 +12,11 @@ import { configureStore } from './store';
 
 // Material UI Imports
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import amber from '@material-ui/core/colors/amber';
-import indigo from '@material-ui/core/colors/indigo';
 
-// Material UI Setup
-const theme = createMuiTheme({
+// Material UI ThemeProvider Setup
+const darkTheme = createMuiTheme({
   palette: {
     type: 'dark',
-    primary: indigo,
-    secondary: amber,
   },
   status: {
     danger: 'orange',
@@ -36,7 +32,7 @@ ReactDOM.render(
     <PersistGate
       loading={<div>Loading</div>}
       persistor={persistor}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkTheme}>
         <App />
       </ThemeProvider>
     </PersistGate>

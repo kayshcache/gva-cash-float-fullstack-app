@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { createThing } from '../actions';
+import { createThingRequest } from '../thunks';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
@@ -34,7 +34,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onCreatePressed: thingName => dispatch(createThing(thingName)),
+  onCreatePressed: thingName => dispatch(createThingRequest(thingName)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewThingForm);
