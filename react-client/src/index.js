@@ -12,14 +12,24 @@ import { configureStore } from './store';
 
 // Material UI Imports
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import red from '@material-ui/core/colors/red';
 
 // Material UI ThemeProvider Setup
 const darkTheme = createMuiTheme({
   palette: {
     type: 'dark',
+    primary: {
+      main: '#03DAC6',
+    },
+    secondary: {
+      main: '#b388ff',
+    },
+    background: {
+      default: "#121212"
+    },
   },
   status: {
-    danger: 'orange',
+    danger: red,
   },
 });
 

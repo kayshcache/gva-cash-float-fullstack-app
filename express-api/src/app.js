@@ -19,8 +19,8 @@ import authRouter from './routes/authRouter';
 import MongoAtlasClient from './mongoAtlas';
 import RedisLabsClient from './redisLabs';
 
-// Dotenv import and run config
-require('dotenv').config();
+// Dotenv for local development environment require and run config
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 // Set up data-store
 const databaseName = 'mern-template-v1'

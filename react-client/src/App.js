@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,6 +11,7 @@ import About from './pages/About';
 const App = () => (
   <div>
     <NavBar />
+    <CssBaseline />
     <Container maxWidth="lg">
       <Router>
 	<Switch>
