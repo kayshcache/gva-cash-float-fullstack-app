@@ -5,6 +5,14 @@ const Schema = mongoose.Schema;
 export const ThingSchema = new Schema({
   thingName: {
     type: String,
-    required: true
+    required: true,
+  },
+  isTrue: {
+    type: Boolean,
+    default: false,
+  },
+  createdDate: {
+    type: Date,
+    default: Date.now,
   },
 });

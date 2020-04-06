@@ -5,4 +5,4 @@ import express from 'express';
  * Could be used for a docs page for the API
  *
  * */
-export default express.Router().get('/', (req, res) => res.render('index', { title: 'Docs' }));
+export default express.Router().get('/', (req, res) => res.json({message: 'Nothing at root'}));

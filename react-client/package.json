@@ -1,14 +1,18 @@
 {
   "name": "react-client",
   "version": "0.1.0",
-  "proxy": "http://localhost:8888/",
+  "proxy": "https://coder-portfolio-268803.appspot.com/",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.9.2",
     "@material-ui/core": "^4.9.8",
     "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.0",
+    "@types/react-dom": "^16.9.6",
     "axios": "^0.19.2",
     "eslint-plugin-flowtype": "^3.13.0",
     "react": "^16.13.0",
@@ -17,7 +21,9 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
     "typescript": "^3.8.3"
   },
   "scripts": {
@@ -43,5 +49,8 @@
   },
   "optionalDependencies": {
     "fsevents": "^2.1.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.9.0"
   }
 }

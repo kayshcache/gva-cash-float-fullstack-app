@@ -1,19 +1,56 @@
 import redis from 'redis';
 import request from 'request';
 
-require('dotenv').config();
+export default class RedisLabsClient {
+  constructor() {
+    this.client = redis.createClient({
+      host: process.env.REDIS_HOST,
+      port: process.env.REDIS_PORT,
+      password: process.env.REDIS_PASSWORD,
+    });
+  }
 
-export default function connectRedis() {
+  connect() {
+    this.client.on('connect', () => {
+      console.time('redis');
+      console.log('Connected to RedisLabs Enterprise Cloud');
+    });
+  }
+
+  insert(data, callback) {
+    const values = ['values'];
+
+    Object.keys(data).map(key => {
+      values.push(data[key]);
+      values.push(key);
+    });
+    this.client.zadd(values, callback);
+  }
+
+  fetchFromApi(apiUri, callback) {
+    request.get(apiUri, (err, raw, body) => {
+      return callback(err, JSON.parse(body));
+    });
+  }
+}
+
+
+// No longer used
+//
+//
+//
+//
+function connectRedis() {
   const redisClient = redis.createClient({
     host: process.env.REDIS_HOST,
     port: process.env.REDIS_PORT,
     password: process.env.REDIS_PASSWORD,
   });
 
+/*
   redisClient.on('connect', () => {
     console.time('redis');
     console.log('Connected to Redis Enterprise Cloud');
-/*
     fetchFromAPI((err, data) => {
       insertRedis(redisClient, data.bpi, (err, results) => {
 	if (err) throw err;
@@ -27,9 +64,9 @@ export default function connectRedis() {
 	});
       });
     });
-*/
   });
 
+*/
   function insertRedis(client, data, callback) {
     const values = ['values'];
 
@@ -47,9 +84,3 @@ export default function connectRedis() {
   }
 }
 
-/*
-export default class RedisClient {
-  constructor() {
-  }
-}
-*/

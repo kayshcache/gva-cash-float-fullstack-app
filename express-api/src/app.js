@@ -1,37 +1,39 @@
-// Third party packages
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+if (process.env.NODE_ENV === 'development') require('dotenv').config();
+
+// Express App instantiate
+const app = express();
+
+// Security orientated middleware
 import logger from 'morgan';
 import helmet from 'helmet';
 import jsonwebtoken from 'jsonwebtoken';
-import connectRedis from './redis';
-
-connectRedis();
 
 // Modules from this repository
 import indexRouter from './routes/indexRouter';
 import thingsRouter from './routes/thingsRouter';
 import authRouter from './routes/authRouter';
 
-// This is a bespoke class created for this stack
-import MongoAtlas from './database';
+// Redis & MongoAtlas bespoke database connection imports
+import MongoAtlasClient from './mongoAtlas';
+import RedisLabsClient from './redisLabs';
 
-
-const app = express();
-
-// Set up database
+// Set up data-store
 const databaseName = 'mern-template-v1'
-const database = new MongoAtlas(databaseName);
-database.connect();
+const mongo = new MongoAtlasClient(databaseName);
+const redis = new RedisLabsClient();
+mongo.connect();
+redis.connect();
 
 // Set up middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
+app.set('view engine', 'json');
 
 // Set up JWT
 // Check for headers and required elements for JWT
@@ -53,7 +55,7 @@ app.use('/', indexRouter);
 app.use('/things', thingsRouter);
 app.use('/auth', authRouter);
 
-// Must keep the non-ES6 syntax for now
+// Must keep the ES5 syntax for now
 module.exports = app;
 
 // The app is launched from a different file you will find here: ./bin/www
