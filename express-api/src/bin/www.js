@@ -1,13 +1,13 @@
-//#!/usr/bin/env node
+#!/usr/bin/env node
 
 /**
  * Module dependencies.
  */
 
-var app = require('../src/app');
+var app = require('../app');
 var debug = require('debug')('express-api:server');
 var http = require('http');
-require('dotenv').config();
+if (process.env.NODE_ENV === 'development') require('dotenv').config();
 
 /**
  * Get port from environment and store in Express.

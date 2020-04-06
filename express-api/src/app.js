@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+if (process.env.NODE_ENV === 'development') require('dotenv').config();
 
 // Express App instantiate
 const app = express();
@@ -19,9 +20,6 @@ import authRouter from './routes/authRouter';
 import MongoAtlasClient from './mongoAtlas';
 import RedisLabsClient from './redisLabs';
 
-// Dotenv for local development environment require and run config
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
-
 // Set up data-store
 const databaseName = 'mern-template-v1'
 const mongo = new MongoAtlasClient(databaseName);
@@ -34,8 +32,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
+app.set('view engine', 'json');
 
 // Set up JWT
 // Check for headers and required elements for JWT
