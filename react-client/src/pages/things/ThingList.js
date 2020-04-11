@@ -1,31 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import NewThingForm from './NewThingForm';
-import ThingListItem from './ThingListItem';
-import { deleteThing } from '../actions';
+import ThingCard from './ThingListItem';
+import { loadThings, deleteThingRequest } from '../thunks';
 
-// Material-UI Imports
-import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
+// Export non-default for testing
+export const ThingGrid = ({ things = [], isLoading, onDeletePressed, onDisplayAlertClicked, startLoadingThings,}) => {
+  useEffect(() => {
+    startLoadingThings();
+  }, [startLoadingThings]);
 
-const ThingList = ({ things = [{ thingName: 'first thing'}], onDeletePressed }) => (
-  <div className="list-container">
-    <NewThingForm />
-    <Grid item xs={12} md={2}>
-	<List>
-          {things.map(thing => <ThingListItem thing={thing} onDeletePressed={onDeletePressed} />)}
-	</List>
-    </Grid>
-  </div>
-);
+  const loadingMessage = <div>Loading things...</div>;
+  const content = (
+    <>
+      {things.map(thing => <ThingCard key={thing._id} thing={thing} onDeletePressed={onDeletePressed} />)}
+    </>
+  );
 
+  return isLoading ? loadingMessage : content;
+};
+
+// Redux State Handling
 const mapStateToProps = state => ({
   things: state.things,
+  isLoading: state.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onDeletePressed: thingName => dispatch(deleteThing(thingName)),
+  startLoadingThings: () => dispatch(loadThings()),
+  onDeletePressed: id => dispatch(deleteThingRequest(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThingList);
+export default connect(mapStateToProps, mapDispatchToProps)(ThingGrid);
 

@@ -26,5 +26,5 @@ export const updateThing = (req, res) => {
 export const deleteThing = (req, res) => {
   const thingId = req.params.thingId;
   Thing.deleteOne({_id: thingId}, (err, things) =>
-    err ? res.send(err) : res.json({msg: `Deleted Mongo document ID: ${thingId}`}));
+    err ? res.send(err) : res.json({_id: thingId}));
 }

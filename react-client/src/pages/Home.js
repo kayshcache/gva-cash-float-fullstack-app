@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-
-import ThingList from './things/ThingList';
+import ThingGrid from './things/ThingList';
+import NewThingForm from './things/NewThingForm';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 export default class Home extends React.Component {
   constructor() {
@@ -10,30 +10,19 @@ export default class Home extends React.Component {
     this.state = {};
   }
 
-  conponentDidMount() {
-    // Through the proxy (set in package.json)
-    axios.get('/things')
-      .then(res => {
-	// handle success
-	this.setState(res.data);
-	console.log(res);
-      })
-      .catch(err => {
-	// handle error
-	console.warn(err);
-      })
-      .finally(() => {
-	// always executed
-      });
-  }
-
   render() {
     return (
-      <div className="Home">
-	<h1>Thing List</h1>
-          <ThingList />
-	<Link to="/about">Go to About page</Link>
-      </div>
+      <Grid container spacing={2}>
+        <Grid item>
+	  <Typography variant="h3">
+            Grid of Things
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+	  <NewThingForm />
+        </Grid>
+        <ThingGrid />
+      </Grid>
     )
   }
 }
