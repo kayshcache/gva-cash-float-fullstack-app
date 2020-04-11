@@ -4,6 +4,7 @@
   "proxy": "https://coder-portfolio-268803.appspot.com/",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.5",
     "@babel/runtime": "^7.9.2",
     "@material-ui/core": "^4.9.8",
     "@material-ui/icons": "^4.9.1",

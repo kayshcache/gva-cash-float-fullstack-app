@@ -11,6 +11,10 @@ When getting data to hold in the state, the request goes into the componentDidMo
 ### React Router for Pages
 Using react router, see ./src/pages/Home.js for the example stateful component.
 ## Installation Procedure
+### Auth0 for user management
+This app uses Auth0.com for its user authentication and backend API security.
+See [Auth0 API Docs](https://auth0.com/docs/api/management/v2/) docs for more information
+See [Calling an API](https://auth0.com/docs/quickstart/spa/react/02-calling-an-api) for details of how the backed is secured.
 ### Api Settings with .env
 Your credentials need to go into a .env file in for the backend: ./express-api/.env
 ```
@@ -28,6 +32,18 @@ REDIS_PASSWORD=<pass>
 
 # JWT & other Auth Settings
 JWT_KEY=vulnerableKey
+
+# Auth0 credentials for securing private endpoints
+AUTH0_MGMT_API_ACCESS_TOKEN=V0ZTp1c2VyX2N1c3R...
+AUTH0_API_URI=https://<subdomain assigned by Auth0>.auth0.com/api/v2/
+```
+### React Auth0 Configuration File
+Create a file in the client folder `./src/auth0_config.json`, that looks like this:
+```javascript
+{
+  "domain": "<subdomain assigned by Auth0>.auth0.com",
+  "clientId": "<get_the_client_id_from_the_auth0_management_site>"
+}
 ```
 ### NPM Install & Start
 Run this command in both express-api and react-client directories
@@ -45,7 +61,7 @@ curl -X POST localhost:PORT/things -H 'Content-Type: application/json' -d '{"thi
 ```
 DELETE Request to delete one thing in the mongodb:
 ```bash
-curl -X DELETE localhost:PORT/things 
+curl -X DELETE localhost:PORT/things/<thing._id>
 ```
 ## React <--> Express Connection
 

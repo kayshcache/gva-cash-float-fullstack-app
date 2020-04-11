@@ -1,6 +1,8 @@
 import React from 'react';
+import { useAuth0 } from './react-auth0-spa';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import { Link } from 'react-router-dom';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -24,6 +26,16 @@ const useStyles = makeStyles((theme) => ({
 export default function NavBar() {
   const classes = useStyles();
 
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const authButtonText = isAuthenticated ? "Logout" : "Login";
+  const handleAuthentication = () => {
+    if (isAuthenticated) {
+      logout();
+    } else {
+      loginWithRedirect({});
+    }
+  };
+
   const [state, setState] = React.useState({
     left: false,
   });
@@ -44,12 +56,13 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Things
+            The Things
           </Typography>
+          <span><Link to="/profile">Profile</Link></span>
           <IconButton href="https://github.com/kayshcache/mern-fullstack-template-v1">
 	    <GitHubIcon />
           </IconButton>
-          <Button color="inherit">Login</Button>
+          <Button onClick={handleAuthentication} color="inherit">{authButtonText}</Button>
         </Toolbar>
       </AppBar>
       <SwipeableDrawer

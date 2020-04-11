@@ -14,6 +14,11 @@ import { configureStore } from './store';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 
+// Auth0 Imports
+import { Auth0Provider } from './react-auth0-spa';
+import config from './auth_config.json';
+import history from './history';
+
 // Material UI ThemeProvider Setup
 const darkTheme = createMuiTheme({
   palette: {
@@ -37,16 +42,33 @@ const darkTheme = createMuiTheme({
 const store = configureStore();
 const persistor = persistStore(store);
 
+// Auth0 Setup
+// if the user tries to access a page that requires them to be authenticated, they will be asked to log in. When they return to the application, they will be forwarded to the page they were originally trying to access thanks to this function.
+const onRedirectCallback = appState => {
+  history.push(
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
+  );
+};
+
 ReactDOM.render(
-  <Provider store={store} >
-    <PersistGate
-      loading={<div>Loading</div>}
-      persistor={persistor}>
-      <ThemeProvider theme={darkTheme}>
-        <App />
-      </ThemeProvider>
-    </PersistGate>
-  </Provider>,
+  <Auth0Provider
+    domain={config.domain}
+    client_id={config.clientId}
+    redirect_uri={window.location.origin}
+    onRedirectCallback={onRedirectCallback}
+  >
+    <Provider store={store} >
+      <PersistGate
+	loading={<div>Loading</div>}
+	persistor={persistor}>
+	<ThemeProvider theme={darkTheme}>
+	  <App />
+	</ThemeProvider>
+      </PersistGate>
+    </Provider>
+  </Auth0Provider>,
   document.getElementById('root'),
 );
 

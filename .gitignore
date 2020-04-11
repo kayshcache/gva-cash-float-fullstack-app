@@ -1,5 +1,9 @@
+# Auth0 Config file
+auth_config.json
+
 # Vim temp files
 *.swp
+
 # Logs
 logs
 *.log

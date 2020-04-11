@@ -66,5 +66,4 @@ const ThingListItem = ({ thing, onDeletePressed }) => {
   );
 }
 
-	  // <Button size="small" onClick={() => onDeletePressed(thing._id)}>
 export default ThingListItem;

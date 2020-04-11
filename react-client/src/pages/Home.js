@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ThingGrid from './things/ThingList';
 import NewThingForm from './things/NewThingForm';
 import Grid from '@material-ui/core/Grid';
@@ -23,13 +22,8 @@ export default class Home extends React.Component {
 	  <NewThingForm />
         </Grid>
         <ThingGrid />
-        <Grid item xs={12}>
-	  <Link to="/about">Go to About page</Link>
-        </Grid>
       </Grid>
     )
   }
 }
 
-// TODO:
-// Put the footer into the pages so as to include the Router links
