@@ -1,11 +1,11 @@
 # Template Repo for MERN Fullstack v0.1.0
 A work in progress.
-## Stack Description
-- Mongo Atlas
-- Express
-- React
-- Node
-### Example Endpoint
+## Stack Diagram
+![template mernstack diagram](/docs/mernstack-diagram-v0-1.png)
+## Full List of Dependencies
+- react-router-dom:
+- auth0-
+### Example Backend Endpoint
 The example endpoint for the API is localhost:4242/things. You can hit this with curl for testing or do it with React. It is recommended to use [Axios](https://www.npmjs.com/package/axios) and therefore is installed, but you could equally use any package or the [FetchAPI](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 When getting data to hold in the state, the request goes into the componentDidMount() method of a stateful React component. See ./src/pages/Home.js for the example using Axios.
 ### React Router for Pages
