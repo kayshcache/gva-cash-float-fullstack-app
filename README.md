@@ -1,4 +1,4 @@
-# Template Repo for MERN Fullstack v0.1.0
+# Template Mernstack v0.1.0
 A work in progress.
 ## Stack Diagram
 ![template mernstack diagram](/docs/mernstack-diagram-v0-1.png)
