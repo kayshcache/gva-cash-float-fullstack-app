@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 if (process.env.NODE_ENV === 'development') require('dotenv').config();
@@ -33,10 +34,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(helmet());
+app.use(cors());
 app.set('view engine', 'json');
 
 // Set up JWT
-// Check for headers and required elements for JWT
+/* Check for headers and required elements for JWT
 app.use((req, res, next) => {
   if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
     jsonwebtoken.verify(req.headers.authorization.split(' ')[1], process.env.JWT_KEY, (err, decode) => {
@@ -49,7 +51,7 @@ app.use((req, res, next) => {
     next();
   }
 });
-
+*/
 // Use bespoke routers - as many as you like
 app.use('/', indexRouter);
 app.use('/things', thingsRouter);

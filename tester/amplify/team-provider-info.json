@@ -1,0 +1,15 @@
+{
+    "nodejs": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-tester-nodejs-133032-authRole",
+            "UnauthRoleArn": "arn:aws:iam::800173703909:role/amplify-tester-nodejs-133032-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::800173703909:role/amplify-tester-nodejs-133032-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-tester-nodejs-133032-deployment",
+            "UnauthRoleName": "amplify-tester-nodejs-133032-unauthRole",
+            "StackName": "amplify-tester-nodejs-133032",
+            "StackId": "arn:aws:cloudformation:us-east-2:800173703909:stack/amplify-tester-nodejs-133032/23b4dbb0-7d37-11ea-b8e4-0286ec33b064",
+            "AmplifyAppId": "d84mpcr8v716i"
+        }
+    }
+}

@@ -2,6 +2,8 @@
 
 var _express = _interopRequireDefault(require("express"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
 var _path = _interopRequireDefault(require("path"));
 
 var _cookieParser = _interopRequireDefault(require("cookie-parser"));
@@ -42,12 +44,13 @@ app.use(_express["default"].urlencoded({
 }));
 app.use((0, _cookieParser["default"])());
 app.use((0, _helmet["default"])());
+app.use((0, _cors["default"])());
 app.set('view engine', 'json'); // Set up JWT
-// Check for headers and required elements for JWT
 
-app.use(function (req, res, next) {
+/* Check for headers and required elements for JWT
+app.use((req, res, next) => {
   if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0] === 'JWT') {
-    _jsonwebtoken["default"].verify(req.headers.authorization.split(' ')[1], process.env.JWT_KEY, function (err, decode) {
+    jsonwebtoken.verify(req.headers.authorization.split(' ')[1], process.env.JWT_KEY, (err, decode) => {
       if (err) req.user = undefined;
       req.user = decode;
       next();
@@ -56,7 +59,9 @@ app.use(function (req, res, next) {
     req.user = undefined;
     next();
   }
-}); // Use bespoke routers - as many as you like
+});
+*/
+// Use bespoke routers - as many as you like
 
 app.use('/', _indexRouter["default"]);
 app.use('/things', _thingsRouter["default"]);
