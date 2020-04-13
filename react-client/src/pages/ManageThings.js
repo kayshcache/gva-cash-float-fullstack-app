@@ -1,5 +1,5 @@
 import React from 'react';
-import ThingGrid from './things/ThingList';
+import ThingCardGrid from './things/ThingCardGrid';
 import NewThingForm from './things/NewThingForm';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -18,7 +18,7 @@ export default function ManageThings() {
       <Grid item xs={12}>
 	<NewThingForm />
       </Grid>
-      <ThingGrid />
+      <ThingCardGrid />
     </Grid>
   )
 }
