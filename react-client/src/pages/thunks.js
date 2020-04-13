@@ -7,6 +7,8 @@ import {
   deleteThing,
 } from './actions';
 
+const api = 'https://dathings.ue.r.appspot.com';
+
 export const displayAlert = err => () => {
   alert(err);
 };
@@ -14,7 +16,7 @@ export const displayAlert = err => () => {
 export const loadThings = () => async (dispatch, getState) => {
   try {
     dispatch(loadThingsInProgress());
-    const response = await fetch('/things');
+    const response = await fetch(`${api}/things`);
     const things = await response.json();
 
     dispatch(loadThingsSuccess(things));
@@ -27,11 +29,12 @@ export const loadThings = () => async (dispatch, getState) => {
 export const createThingRequest = thingName => async dispatch => {
   try {
     const body = JSON.stringify({ thingName });
-    const response = await fetch('/things', {
+    const response = await fetch(`${api}/things`, {
       headers: {
-	'Content-Type': 'application/json'
+	'Content-Type': 'application/json',
       },
       method: 'post',
+      mode: 'cors',
       body,
     });
     const newThing = await response.json();
@@ -43,8 +46,9 @@ export const createThingRequest = thingName => async dispatch => {
 
 export const deleteThingRequest = id => async dispatch => {
   try {
-    const response = await fetch(`/things/${id}`, {
+    const response = await fetch(`${api}/things/${id}`, {
       method: 'delete',
+      mode: 'cors',
     });
     const thingId = await response.json();
     dispatch(deleteThing(thingId));

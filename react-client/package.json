@@ -1,7 +1,6 @@
 {
   "name": "react-client",
   "version": "0.1.0",
-  "proxy": "https://coder-portfolio-268803.appspot.com/",
   "private": true,
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.6.5",
