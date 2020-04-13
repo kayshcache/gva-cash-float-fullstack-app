@@ -9,6 +9,8 @@ import { useAuth0 } from './react-auth0-spa';
 import Home from './pages/Home';
 import About from './pages/About';
 import Profile from './pages/Profile';
+import ManageThings from './pages/ManageThings';
+import ManageUsers from './pages/ManageUsers';
 
 
 const App = () => {
@@ -22,8 +24,10 @@ const App = () => {
 	  <Switch>
 	    <Route exact path="/" component={Home} />
 	    <Route path="/about" component={About} />
-	    {/* To secure a routing path a PrivateRoute is used */}
+	    <PrivateRoute path="/things" component={ManageThings} />
+	    <PrivateRoute path="/users" component={ManageUsers} />
             <PrivateRoute path="/profile" component={Profile} />
+	    {/* To secure a routing path a PrivateRoute is used */}
 	  </Switch>
           <Footer />
         </Container>
