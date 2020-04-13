@@ -1,5 +1,5 @@
 import React from 'react';
-import ThingGrid from './things/ThingList';
+import ThingGrid from './things/ThingGrid';
 import NewThingForm from './things/NewThingForm';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';

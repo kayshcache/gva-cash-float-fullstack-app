@@ -8,8 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import ThingList from './pages/things/ThingList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,10 +60,10 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             The Things
           </Typography>
-          <span><Link to="/profile">Profile</Link></span>
-          <IconButton href="https://github.com/kayshcache/mern-fullstack-template-v1">
-	    <GitHubIcon />
-          </IconButton>
+          <IconButton component={GitHubIcon} href="https://github.com/kayshcache/mern-fullstack-template-v1" />
+	  <IconButton component={Link} to="/profile">
+	    <AccountCircleIcon />
+	  </IconButton>
           <Button onClick={handleAuthentication} color="inherit">{authButtonText}</Button>
         </Toolbar>
       </AppBar>
@@ -71,7 +73,7 @@ export default function NavBar() {
         onClose={toggleDrawer("left", false)}
         onOpen={toggleDrawer("left", true)}
       >
-	List of stuff
+        <ThingList />
       </SwipeableDrawer>
       <Toolbar />
       <Toolbar />

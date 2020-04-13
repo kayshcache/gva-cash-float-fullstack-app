@@ -1,6 +1,5 @@
 import React from 'react';
-import ThingGrid from './things/ThingList';
-import NewThingForm from './things/NewThingForm';
+import ThingList from './things/ThingList';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
@@ -13,15 +12,17 @@ export default class Home extends React.Component {
   render() {
     return (
       <Grid container spacing={2}>
-        <Grid item>
-	  <Typography variant="h3">
-            Grid of Things
-          </Typography>
-        </Grid>
         <Grid item xs={12}>
-	  <NewThingForm />
+	  <Typography variant="h3">
+            List of Things
+          </Typography>
+	  <Typography variant="body1">
+	    Login to manage the Grid of Things!
+	  </Typography>
         </Grid>
-        <ThingGrid />
+	<Grid item xs={12}>
+          <ThingList />
+	</Grid>
       </Grid>
     )
   }

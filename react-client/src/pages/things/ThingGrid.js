@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import List from '@material-ui/core/List';
-import ThingListItem from './ThingListItem';
+import ThingCard from './ThingGridItemCard';
 import { loadThings, deleteThingRequest } from '../thunks';
 
 // Export non-default for testing
-export const ThingList = ({ things = [], isLoading, onDeletePressed, onDisplayAlertClicked, startLoadingThings,}) => {
+export const ThingGrid = ({ things = [], isLoading, onDeletePressed, onDisplayAlertClicked, startLoadingThings,}) => {
   useEffect(() => {
     startLoadingThings();
   }, [startLoadingThings]);
 
   const loadingMessage = <div>Loading things...</div>;
   const content = (
-    <List aria-label="home list of things">
-      {things.map(thing => <ThingListItem key={thing._id} thing={thing} onDeletePressed={onDeletePressed} />)}
-    </List>
+    <>
+      {things.map(thing => <ThingCard key={thing._id} thing={thing} onDeletePressed={onDeletePressed} />)}
+    </>
   );
 
   return isLoading ? loadingMessage : content;
@@ -31,5 +30,5 @@ const mapDispatchToProps = dispatch => ({
   onDeletePressed: id => dispatch(deleteThingRequest(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ThingList);
+export default connect(mapStateToProps, mapDispatchToProps)(ThingGrid);
 
